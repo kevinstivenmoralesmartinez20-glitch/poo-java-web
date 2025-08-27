@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POO en Java - Página Educativa</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Programación Orientada a Objetos (POO) en Java</h1>
+        <nav>
+            <ul>
+                <li><a href="#control">Estructuras de Control</a></li>
+                <li><a href="#clases">Clases, Objetos y Métodos</a></li>
+                <li><a href="#pilares">Pilares y Conceptos Avanzados</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Sección 1 -->
+        <section id="control">
+            <h2>Sección 1: Estructuras de Control</h2>
+            
+            <h3>Bucle while</h3>
+            <p><strong>Definición:</strong> Se utiliza cuando no sabemos cuántas veces se repetirá un bloque de código, pero sí conocemos la condición que debe cumplirse.</p>
+            <p><strong>Sintaxis:</strong></p>
+            <pre><code class="java">while (condición) {
+    // Código a ejecutar
+}</code></pre>
+            <p><strong>Ejemplo:</strong> Contar del 1 al 10</p>
+            <pre><code class="java">int i = 1;
+while (i &lt;= 10) {
+    System.out.println(i);
+    i++;
+}</code></pre>
+
+            <h3>Bucle do-while</h3>
+            <p><strong>Definición:</strong> Similar al while, pero garantiza que el código se ejecutará al menos una vez.</p>
+            <p><strong>Sintaxis:</strong></p>
+            <pre><code class="java">do {
+    // Código a ejecutar
+} while (condición);</code></pre>
+            <p><strong>Ejemplo:</strong> Menú simple</p>
+            <pre><code class="java">int opcion;
+do {
+    System.out.println("1. Opción A");
+    System.out.println("2. Opción B");
+    System.out.println("3. Salir");
+    opcion = scanner.nextInt();
+} while (opcion != 3);</code></pre>
+
+            <h3>Bucle for</h3>
+            <p><strong>Definición:</strong> Ideal para recorrer un número conocido de repeticiones.</p>
+            <p><strong>Sintaxis:</strong></p>
+            <pre><code class="java">for (inicialización; condición; incremento) {
+    // Código a ejecutar
+}</code></pre>
+            <p><strong>Ejemplo:</strong> Recorrer un arreglo</p>
+            <pre><code class="java">int[] numeros = {1, 2, 3, 4, 5};
+for (int j = 0; j &lt; numeros.length; j++) {
+    System.out.println(numeros[j]);
+}</code></pre>
+        </section>
+
+        <!-- Sección 2 -->
+        <section id="clases">
+            <h2>Sección 2: Clases, Objetos y Métodos</h2>
+
+            <h3>Clases y Objetos</h3>
+            <p><strong>Definición:</strong> Una clase es como un molde, y los objetos son las instancias creadas a partir de ese molde.</p>
+            <pre><code class="java">class Coche {
+    String color;
+    String marca;
+    int velocidad;
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Coche coche1 = new Coche();
+        coche1.color = "Rojo";
+        coche1.marca = "Toyota";
+        coche1.velocidad = 120;
+
+        Coche coche2 = new Coche();
+        coche2.color = "Azul";
+        coche2.marca = "Ford";
+        coche2.velocidad = 100;
+    }
+}</code></pre>
+
+            <h3>Métodos</h3>
+            <p><strong>Definición:</strong> Son comportamientos que los objetos pueden realizar.</p>
+            <pre><code class="java">class Coche {
+    void acelerar() {
+        System.out.println("El coche está acelerando");
+    }
+}</code></pre>
+
+            <h3>Sobrecarga de Métodos</h3>
+            <pre><code class="java">class Calculadora {
+    int sumar(int a, int b) {
+        return a + b;
+    }
+
+    double sumar(double a, double b) {
+        return a + b;
+    }
+}</code></pre>
+
+            <h3>Modificador static</h3>
+            <pre><code class="java">class Utilidad {
+    static int contadorDeInstancias = 0;
+
+    static void mostrarMensaje() {
+        System.out.println("Este es un método estático.");
+    }
+}</code></pre>
+
+            <h3>Clases Locales</h3>
+            <pre><code class="java">class Main {
+    void metodoConClaseLocal() {
+        class ClaseLocal {
+            void mostrar() {
+                System.out.println("Soy una clase local.");
+            }
+        }
+        ClaseLocal obj = new ClaseLocal();
+        obj.mostrar();
+    }
+}</code></pre>
+        </section>
+
+        <!-- Sección 3 -->
+        <section id="pilares">
+            <h2>Sección 3: Pilares y Conceptos Avanzados</h2>
+
+            <h3>Encapsulamiento</h3>
+            <pre><code class="java">class CuentaBancaria {
+    private double saldo;
+
+    public void depositar(double cantidad) {
+        saldo += cantidad;
+    }
+
+    public void retirar(double cantidad) {
+        if (saldo &gt;= cantidad) {
+            saldo -= cantidad;
+        }
+    }
+}</code></pre>
+
+            <h3>Composición</h3>
+            <pre><code class="java">class Motor {
+    void encender() {
+        System.out.println("Motor encendido");
+    }
+}
+
+class Coche {
+    Motor motor = new Motor();
+}</code></pre>
+
+            <h3>Delegación</h3>
+            <pre><code class="java">class Impresora {
+    void imprimir() {
+        System.out.println("Imprimiendo...");
+    }
+}
+
+class Gerente {
+    Impresora impresora = new Impresora();
+    void imprimirReporte() {
+        impresora.imprimir();
+    }
+}</code></pre>
+
+            <h3>Clases Envoltorio (Wrapper)</h3>
+            <pre><code class="java">Integer num = 10; // Autoboxing
+int valor = num; // Unboxing</code></pre>
+        </section>
+    </main>
+
+    <footer>
+        <p>Material educativo - POO en Java</p>
+    </footer>
+</body>
+</html>
