@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>POO en Java - Ejemplos y Explicaciones</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #f4f8fc, #e8f0ff);
+      color: #333;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(135deg, #4a90e2, #357ABD);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+    }
+    header p {
+      font-size: 1.2em;
+      opacity: 0.9;
+    }
+    nav {
+      background: #2c3e50;
+      padding: 15px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    nav a {
+      color: white;
+      margin: 8px 15px;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 14px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+    nav a:hover {
+      background: #4a90e2;
+      color: #fff;
+      transform: scale(1.1);
+      box-shadow: 0 2px 8px rgba(74,144,226,0.6);
+    }
+    section {
+      background: white;
+      margin: 30px auto;
+      padding: 25px;
+      max-width: 900px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    h2 {
+      color: #4a90e2;
+      border-left: 6px solid #4a90e2;
+      padding-left: 10px;
+    }
+    pre {
+      background: #272822;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.95em;
+    }
+    code {
+      font-family: monospace;
+    }
+    ul {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+    footer {
+      text-align: center;
+      background: #2c3e50;
+      color: white;
+      padding: 20px;
+      margin-top: 40px;
+      font-size: 0.9em;
+    }
+    /* ===== Botón flotante Subir ===== */
+    #btnSubir {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #4a90e2;
+      color: white;
+      border: none;
+      padding: 14px 18px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      display: none;
+      transition: all 0.3s ease;
+    }
+    #btnSubir:hover {
+      background: #357ABD;
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Programación Orientada a Objetos en Java</h1>
+  <p>Ejemplos, explicaciones línea por línea y diagramas UML</p>
+</header>
+
+<nav>
+  <a href="#clases-objetos">Clases y Objetos</a>
+  <a href="#herencia">Herencia</a>
+  <a href="#polimorfismo">Polimorfismo</a>
+  <a href="#encapsulamiento">Encapsulamiento</a>
+  <a href="#composicion">Composición</a>
+  <a href="#delegacion">Delegación</a>
+</nav>
+
+<section id="clases-objetos">
+  <h2>📘 Clases y Objetos</h2>
+  <pre><code class="language-java">
+class Coche {
+    String color;
+    String marca;
+    int velocidad;
+
+    void acelerar() {
+        System.out.println("El coche está acelerando");
+    }
+}
+  </code></pre>
+  <ul>
+    <li><b>class Coche</b>: Define la clase.</li>
+    <li><b>color, marca, velocidad</b>: Atributos del objeto.</li>
+    <li><b>acelerar()</b>: Método que imprime el comportamiento.</li>
+  </ul>
+  <pre>
++-------------------+
+|       Coche       |
++-------------------+
+| - color : String  |
+| - marca : String  |
+| - velocidad : int |
++-------------------+
+| + acelerar() : void |
++-------------------+
+  </pre>
+</section>
+
+<section id="herencia">
+  <h2>📗 Herencia</h2>
+  <pre><code class="language-java">
+class Vehiculo {
+    void mover() {
+        System.out.println("El vehículo se mueve");
+    }
+}
+
+class Coche extends Vehiculo {
+    void acelerar() {
+        System.out.println("El coche acelera");
+    }
+}
+  </code></pre>
+  <ul>
+    <li><b>Vehiculo</b>: Clase padre.</li>
+    <li><b>Coche</b>: Clase hija que hereda de <b>Vehiculo</b>.</li>
+    <li><b>extends</b>: Palabra clave para herencia.</li>
+  </ul>
+  <pre>
++-------------------+        +-------------------+
+|     Vehiculo      |<-------|       Coche       |
++-------------------+        +-------------------+
+| + mover() : void  |        | + acelerar() : void |
++-------------------+        +-------------------+
+  </pre>
+</section>
+
+<section id="polimorfismo">
+  <h2>📙 Polimorfismo</h2>
+  <pre><code class="language-java">
+class Animal {
+    void sonido() {
+        System.out.println("El animal hace un sonido");
+    }
+}
+
+class Perro extends Animal {
+    void sonido() {
+        System.out.println("El perro ladra");
+    }
+}
+
+class Gato extends Animal {
+    void sonido() {
+        System.out.println("El gato maúlla");
+    }
+}
+  </code></pre>
+  <ul>
+    <li><b>Animal</b>: Clase base con método genérico.</li>
+    <li><b>Perro</b> y <b>Gato</b>: Sobrescriben el método <b>sonido()</b>.</li>
+  </ul>
+</section>
+
+<section id="encapsulamiento">
+  <h2>📕 Encapsulamiento</h2>
+  <pre><code class="language-java">
+class CuentaBancaria {
+    private double saldo;
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void depositar(double monto) {
+        saldo += monto;
+    }
+}
+  </code></pre>
+  <ul>
+    <li><b>private saldo</b>: Protege el atributo.</li>
+    <li><b>getSaldo()</b>: Método público para acceder al saldo.</li>
+    <li><b>depositar()</b>: Controla la modificación.</li>
+  </ul>
+</section>
+
+<section id="composicion">
+  <h2>📒 Composición</h2>
+  <pre><code class="language-java">
+class Motor {
+    void encender() {
+        System.out.println("El motor arranca");
+    }
+}
+
+class Auto {
+    private Motor motor = new Motor();
+
+    void encenderAuto() {
+        motor.encender();
+    }
+}
+  </code></pre>
+  <ul>
+    <li><b>Auto</b> tiene un objeto <b>Motor</b>.</li>
+    <li>Relación de "tiene un".</li>
+  </ul>
+</section>
+
+<section id="delegacion">
+  <h2>📓 Delegación</h2>
+  <pre><code class="language-java">
+class Impresora {
+    void imprimir() {
+        System.out.println("Imprimiendo documento...");
+    }
+}
+
+class Computadora {
+    private Impresora impresora = new Impresora();
+
+    void imprimirDocumento() {
+        impresora.imprimir(); // delega la tarea
+    }
+}
+  </code></pre>
+  <ul>
+    <li><b>Computadora</b> delega la tarea a <b>Impresora</b>.</li>
+    <li>Se promueve la reutilización de código.</li>
+  </ul>
+</section>
+
+<footer>
+  <p>© 2025 - Página educativa sobre POO en Java | Diseñada con 💻 y ☕</p>
+</footer>
+
+<button id="btnSubir">⬆</button>
+
+<script>
+  const secciones = document.querySelectorAll("section");
+  const mostrarSeccion = new IntersectionObserver((entradas) => {
+    entradas.forEach(entrada => {
+      if (entrada.isIntersecting) {
+        entrada.target.classList.add("visible");
+      }
+    });
+  }, { threshold: 0.2 });
+  secciones.forEach(sec => {
+    mostrarSeccion.observe(sec);
+  });
+
+  const btnSubir = document.getElementById("btnSubir");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 200) {
+      btnSubir.style.display = "block";
+    } else {
+      btnSubir.style.display = "none";
+    }
+  });
+  btnSubir.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+</script>
+
+</body>
+</html>
